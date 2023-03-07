@@ -37,6 +37,15 @@ def print_beginning_letter(students, letter)
     end
 end
 
+def name_shorter_than_12_chars(students)
+    puts "Students whose name is shorter than 12 characters"
+    students.each_with_index do |student, index|
+        if student[:name].length < 12
+            puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+        end
+    end
+end
+
 def print_footer(students)
     puts "Overall, we have #{students.count} great students"
 end
@@ -45,5 +54,6 @@ students = input_students
 # nothing happens until we call the methods
 print_header
 # print(students)
-print_beginning_letter(students, "C")
-print_footer(students)
+# print_beginning_letter(students, "C")
+name_shorter_than_12_chars(students)
+# print_footer(students)
