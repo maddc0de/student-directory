@@ -1,51 +1,55 @@
 def input_students
-    puts "Please enter the names of the students"
-    puts "To finish, just hit return twice"
-    # create an empty array
-    students = []
-    # get the first name
+  puts "Please enter the names of the students"
+  puts "To finish, just hit return twice"
+  # create an empty array
+  students = []
+  # get the first name
+  name = gets.chomp.to_s
+  # while the name is not empty, repeat this code
+  while !name.empty? do
+    puts "Please enter worst enemy"
+    worst_enemy = gets.chomp
+    worst_enemy = "The World" if worst_enemy.empty?
+    puts "Please enter cohort month"
+    month = gets.chomp.to_sym
+    month = "March" if month.empty?
+    # add the student hash to the array
+    students << {name: name, enemy: worst_enemy, cohort: month}
+    puts "Now we have #{students.count} students"
+    # get another name from the user
     name = gets.chomp
-    # while the name is not empty, repeat this code
-    while !name.empty? do
-        puts "Please enter worst enemy"
-        worst_enemy = gets.chomp
-        # add the student hash to the array
-        students << {name: name, enemy: worst_enemy, cohort: :november}
-        puts "Now we have #{students.count} students"
-        # get another name from the user
-        name = gets.chomp
-    end
-    # return the array of students
-    students
+  end
+  # return the array of students
+  students
 end    
 
 def print_header
-    puts "The students of Villains Academy"
-    puts "-------------"
+  puts "The students of Villains Academy"
+  puts "-------------"
 end
 
 def print(students)
-    students.each_with_index do |student, index|
-        puts "#{index + 1}. #{student[:name]}, #{student[:enemy]}'s worst enemy (#{student[:cohort]} cohort)"
-    end
+  students.each_with_index do |student, index|
+    puts "#{index + 1}. #{student[:name]}, #{student[:enemy]}'s worst enemy (#{student[:cohort]} cohort)"
+  end
 end
 
 def print_beginning_letter(students, letter)
-    puts "Students whose name begins with a letter #{letter}"
-    students.each_with_index do |student, index|
-        if student[:name][0] == letter
-            puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
-        end
-    end
+  puts "Students whose name begins with a letter #{letter}"
+  students.each_with_index do |student, index|
+      if student[:name][0] == letter
+        puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+      end
+  end
 end
 
 def name_shorter_than_12_chars(students)
-    puts "Students whose name is shorter than 12 characters"
-    students.each_with_index do |student, index|
-        if student[:name].length < 12
-            puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
-        end
+  puts "Students whose name is shorter than 12 characters"
+  students.each_with_index do |student, index|
+    if student[:name].length < 12
+      puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
     end
+  end
 end
 
 def print_footer(students)
