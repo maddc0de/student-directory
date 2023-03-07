@@ -29,6 +29,12 @@ def print_header
 end
 
 def print(students)
+  students.each do |student|
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+  end
+end
+
+def print_cohort_group(students)
   puts "which month of cohorts would you like to see?"
   user_input = gets.chomp.to_sym.capitalize
   cohort_group = students.select do |student|
@@ -39,11 +45,13 @@ def print(students)
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  puts "Overall, we have one great student" if students.count == 1 
+  puts "Overall, we have #{students.count} great students" if students.count > 1
 end
 
 students = input_students
 # nothing happens until we call the methods
 print_header
 print(students)
+# print_cohort_group(students)
 print_footer(students)
