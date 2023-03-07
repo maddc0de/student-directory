@@ -28,6 +28,15 @@ def print(students)
     end
 end
 
+def print_beginning_letter(students, letter)
+    puts "Students whose name begins with a letter #{letter}"
+    students.each_with_index do |student, index|
+        if student[:name][0] == letter
+            puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+        end
+    end
+end
+
 def print_footer(students)
     puts "Overall, we have #{students.count} great students"
 end
@@ -35,5 +44,6 @@ end
 students = input_students
 # nothing happens until we call the methods
 print_header
-print(students)
+# print(students)
+print_beginning_letter(students, "C")
 print_footer(students)
