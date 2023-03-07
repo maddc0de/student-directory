@@ -4,7 +4,7 @@ def input_students
   # create an empty array
   students = []
   # get the first name
-  name = gets.chomp.to_s
+  name = gets.delete_suffix!("\n").to_s
   # while the name is not empty, repeat this code
   while !name.empty? do
     puts "Please enter worst enemy"
@@ -30,7 +30,7 @@ end
 
 def print(students)
   students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    puts "#{student[:name]}, #{student[:enemy]}'s worst enemy (#{student[:cohort]} cohort)"
   end
 end
 
