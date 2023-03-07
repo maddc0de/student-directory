@@ -28,12 +28,12 @@ def print(students)
     end
 end
 
-def print_footer(names)
-    puts "Overall, we have #{names.count} great students"
+def print_footer(students)
+    puts "Overall, we have #{students.count} great students"
 end
 
-# nothing happens until we call the methods
 students = input_students
+# nothing happens until we call the methods
 print_header
 print(students)
 print_footer(students)
