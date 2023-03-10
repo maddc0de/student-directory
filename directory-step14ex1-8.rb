@@ -1,3 +1,4 @@
+require 'csv'
 @students = [] # an empty array accessible to all methods
 @feedback
 
@@ -88,12 +89,11 @@ end
 def save_students
   input_filename
   # open the file for writing
-  file = File.open(@filename, "w") do |file|
+  CSV.open(@filename, "w") do |file|
   # iterate over the array of students
     @students.each do |student|
-      student_data = [student[:name], student[:cohort]]
-      cvs_line = student_data.join(",")
-      file.puts cvs_line
+      cvs_line = "#{student[:name]},#{student[:cohort]}"
+      file << cvs_line.parse_csv
     end
   end
 end
