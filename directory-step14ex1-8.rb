@@ -88,24 +88,24 @@ end
 def save_students
   input_filename
   # open the file for writing
-  file = File.open(@filename, "w")
+  file = File.open(@filename, "w") do |file|
   # iterate over the array of students
-  @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
-    cvs_line = student_data.join(",")
-    file.puts cvs_line
+    @students.each do |student|
+      student_data = [student[:name], student[:cohort]]
+      cvs_line = student_data.join(",")
+      file.puts cvs_line
+    end
   end
-  file.close
 end
 
 def load_students
   input_filename
-  file = File.open(@filename, "r")
-  file.readlines.each do |line| # example line: joker,november
-    name, cohort = line.chomp.split(",") # name = joker  cohort = november
-    add_students(name, cohort)
+  file = File.open(@filename, "r") do |file|
+    file.readlines.each do |line| # example line: joker,november
+      name, cohort = line.chomp.split(",") # name = joker  cohort = november
+      add_students(name, cohort)
+    end
   end
-  file.close
 end
 
 def try_load_students
