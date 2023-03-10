@@ -1,4 +1,13 @@
 @students = [] # an empty array accessible to all methods
+@feedback
+
+def process_feedback
+  if !@feedback.nil? == true
+    puts "action completed"
+  else
+    puts "unable to complete action"
+  end
+end
 
 def print_menu
   puts "1. Input the students"
@@ -16,6 +25,7 @@ def interactive_menu
 end
 
 def process(selection)
+  @feedback = selection
   case selection
     when "1"
       input_students
@@ -30,6 +40,7 @@ def process(selection)
     else
       puts "I don't know what you mean, try again"
   end
+  process_feedback
 end
 
 def input_students
@@ -101,5 +112,5 @@ def add_students(name, cohort)
     @students << {name: name, cohort: cohort.to_sym}
 end
 
-try_load_students
+# try_load_students
 interactive_menu
